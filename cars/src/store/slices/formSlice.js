@@ -1,4 +1,5 @@
-import  { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { addCar } from './carsSlice';
 
 const formSlice = createSlice ({
   name: 'form',
@@ -12,7 +13,16 @@ const formSlice = createSlice ({
     },
     changeCost(state, action) {
       state.cost = action.payload;
-    }
+    },
+  },
+  extraReducers(builder) {
+    // instead of adding more dispatch on carForm used extraReducers
+    // this combine the reducer on line 11-14
+    // when new car is added, reset the name and cost
+    builder.addCase(addCar, (state, action) => {
+      state.name = "";
+      state.cost = 0;
+    })
   }
 });
 
