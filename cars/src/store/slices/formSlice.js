@@ -8,7 +8,7 @@ const formSlice = createSlice ({
   },
   reducers: {
     changeName(state, action) {
-      state.name = action.payLoad;
+      state.name = action.payload;
     },
     changeCost(state, action) {
       state.cost = action.payload;
